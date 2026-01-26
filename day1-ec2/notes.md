@@ -1,37 +1,29 @@
-# Day 2 – AWS Security Groups
+# Day 1 – EC2 Key Pair Creation
 
-Today focused on understanding and configuring AWS Security Groups as network-level firewalls for EC2 instances.
+Focused on understanding EC2 authentication and secure access using key pairs.
 
 ## Key Concepts
-- Security Groups act as virtual firewalls
-- They control inbound and outbound traffic
-- Rules are stateful (return traffic is automatically allowed)
-- Attached at instance or network interface level
-- Works at instance level, not subnet level
+- EC2 instances use key pairs for SSH authentication
+- Private key (.pem) is required to access Linux instances
+- Public key is stored by AWS
+- Key pairs are region-specific
+- Losing a private key means losing access to the instance
 
 ## Practical Task
-Created a security group named `datacenter-sg` in the default VPC with the following rules:
-
-### Inbound Rules
-- HTTP → Port 80 → Source: 0.0.0.0/0  
-- SSH → Port 22 → Source: 0.0.0.0/0  
-
-### Outbound Rules
-- Default: All traffic allowed
+Created an EC2 key pair named `devops-kp` using the AWS console.
 
 ## Why This Matters
-Security groups define the first layer of access control in cloud infrastructure.
-Correct configuration is critical for:
-- Application availability
-- Server security
-- Network isolation
-- Cloud architecture design
+Key pairs are the foundation of secure server access in AWS.
+Without proper key management:
+- Instances become inaccessible
+- Security risks increase
+- Recovery becomes complex
 
 ## Learning Outcome
-- Understood CIDR ranges
-- Learned difference between inbound vs outbound rules
-- Learned how AWS controls network traffic at instance level
-- Hands-on experience with real AWS console configuration
+- Understood EC2 authentication model
+- Learned importance of private key security
+- Understood region-level resource isolation
+- Learned real-world cloud access control basics
 
 ## Proof
-Screenshots added in the `screenshots/` folder.
+Screenshots available in the `screenshots/` folder.
