@@ -1,22 +1,14 @@
-# Create security group
-aws ec2 create-security-group \
---group-name datacenter-sg \
---description "Security group for Nautilus App Servers" \
---vpc-id <default-vpc-id>
+# Check existing key pairs
+aws ec2 describe-key-pairs
 
-# Allow HTTP (port 80)
-aws ec2 authorize-security-group-ingress \
---group-id <sg-id> \
---protocol tcp \
---port 80 \
---cidr 0.0.0.0/0
+# Create a new key pair
+aws ec2 create-key-pair \
+--key-name devops-kp \
+--query "KeyMaterial" \
+--output text > devops-kp.pem
 
-# Allow SSH (port 22)
-aws ec2 authorize-security-group-ingress \
---group-id <sg-id> \
---protocol tcp \
---port 22 \
---cidr 0.0.0.0/0
+# Secure the key file (Linux/macOS)
+chmod 400 devops-kp.pem
 
-# Verify rules
-aws ec2 describe-security-groups --group-names datacenter-sg
+# Verify key pair creation
+aws ec2 describe-key-pairs --key-names devops-kp
