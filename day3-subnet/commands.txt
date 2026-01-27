@@ -1,1 +1,19 @@
+# List default VPC
+aws ec2 describe-vpcs --filters Name=isDefault,Values=true
 
+# List existing subnets
+aws ec2 describe-subnets
+
+# Create subnet
+aws ec2 create-subnet \
+--vpc-id <default-vpc-id> \
+--cidr-block 172.31.100.0/24 \
+--availability-zone us-east-1a
+
+# Tag subnet
+aws ec2 create-tags \
+--resources <subnet-id> \
+--tags Key=Name,Value=devops-subnet
+
+# Verify subnet
+aws ec2 describe-subnets --filters Name=tag:Name,Values=devops-subnet
