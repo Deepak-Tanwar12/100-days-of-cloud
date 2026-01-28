@@ -1,1 +1,15 @@
+# List S3 buckets
+aws s3 ls
 
+# Check versioning status
+aws s3api get-bucket-versioning \
+--bucket datacenter-s3-27492
+
+# Enable versioning
+aws s3api put-bucket-versioning \
+--bucket datacenter-s3-27492 \
+--versioning-configuration Status=Enabled
+
+# Verify versioning
+aws s3api get-bucket-versioning \
+--bucket datacenter-s3-27492
