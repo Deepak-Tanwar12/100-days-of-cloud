@@ -1,1 +1,16 @@
+# List availability zones
+aws ec2 describe-availability-zones
 
+# Create EBS volume
+aws ec2 create-volume \
+--availability-zone us-east-1a \
+--size 2 \
+--volume-type gp3
+
+# Tag the volume
+aws ec2 create-tags \
+--resources <volume-id> \
+--tags Key=Name,Value=xfusion-volume
+
+# Verify volume
+aws ec2 describe-volumes --filters Name=tag:Name,Values=xfusion-volume
