@@ -1,1 +1,21 @@
+# List AMIs
+aws ec2 describe-images --owners amazon
 
+# Create key pair
+aws ec2 create-key-pair \
+--key-name devops-kp \
+--key-type rsa \
+--query "KeyMaterial" \
+--output text > devops-kp.pem
+
+# Launch EC2 instance
+aws ec2 run-instances \
+--image-id ami-0532be01f26a3de55 \
+--instance-type t2.micro \
+--key-name devops-kp \
+--security-group-ids <default-sg-id> \
+--subnet-id <default-subnet-id> \
+--tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=devops-ec2}]'
+
+# Verify instance
+aws ec2 describe-instances --filters Name=tag:Name,Values=devops-ec2
