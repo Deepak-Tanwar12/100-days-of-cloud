@@ -1,1 +1,13 @@
+# Describe instance to verify stop protection
+aws ec2 describe-instances --filters Name=tag:Name,Values=datacenter-ec2
+
+# Enable stop protection
+aws ec2 modify-instance-attribute \
+--instance-id <instance-id> \
+--disable-api-stop false
+
+# Verify stop protection
+aws ec2 describe-instance-attribute \
+--instance-id <instance-id> \
+--attribute disableApiStop
 
