@@ -6,3 +6,4 @@ Day 3 ✅ Subnet Creation
 Day 4 ✅ S3 Versioning  
 Day 5 ✅ EBS Volume Creation  
 Day 6 ✅ EC2 Instance Launch  
+Day 7 ✅ EC2 Instance Type Change  
