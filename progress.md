@@ -8,3 +8,4 @@ Day 5 ✅ EBS Volume Creation
 Day 6 ✅ EC2 Instance Launch  
 Day 7 ✅ EC2 Instance Type Change  
 Day 8 ✅ EC2 Stop Protection  
+Day 9 ✅ EC2 Termination Protection  
