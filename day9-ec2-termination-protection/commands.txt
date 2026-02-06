@@ -1,0 +1,12 @@
+# Describe instance
+aws ec2 describe-instances --filters Name=tag:Name,Values=datacenter-ec2
+
+# Enable termination protection
+aws ec2 modify-instance-attribute \
+--instance-id <instance-id> \
+--disable-api-termination
+
+# Verify termination protection
+aws ec2 describe-instance-attribute \
+--instance-id <instance-id> \
+--attribute disableApiTermination
